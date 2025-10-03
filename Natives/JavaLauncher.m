@@ -20,7 +20,7 @@
 
 extern char **environ;
 
-BOOL validateVirtualMemorySpace(int size) {
+BOOL validateVirtualMemorySpace(size_t size) {
     void *map = mmap(0, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
     // Check if process successfully maps and unmaps a contiguous range
     if (map == MAP_FAILED || munmap(map, size) != 0)
