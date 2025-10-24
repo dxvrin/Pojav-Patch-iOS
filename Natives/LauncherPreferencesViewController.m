@@ -365,7 +365,7 @@
                 @"min": @(250),
                 @"max": @((NSProcessInfo.processInfo.physicalMemory / 1048576) * 0.85),
                 @"enableCondition": ^BOOL(){
-                    return ![self.getPreference(@"java", @"auto_ram") boolValue] && whenNotInGame();
+                    return !getPrefBool(@"java.auto_ram") && whenNotInGame();
                 },
                 @"warnCondition": ^BOOL(DBNumberedSlider *view){
                     return view.value >= NSProcessInfo.processInfo.physicalMemory / 1048576 * 0.37;
@@ -375,6 +375,23 @@
         ], @[
             // Debug settings - only recommended for developer use
             @{@"icon": @"ladybug"},
+            @{@"key": @"debug_universal_script_jit",
+                @"hasDetail": @NO,
+                @"icon": @"scroll",
+                @"type": self.typeSwitch,
+                @"requestReload": @YES,
+                @"enableCondition": ^BOOL() {
+                    return DeviceRequiresTXMWorkaround() && whenNotInGame();
+                },
+            },
+            @{@"key": @"debug_always_attached_jit",
+                @"hasDetail": @YES,
+                @"icon": @"app.connected.to.app.bellow.fill",
+                @"type": self.typeSwitch,
+                @"enableCondition": ^BOOL() {
+                    return getPrefBool(@"debug.debug_universal_script_jit") && whenNotInGame();
+                },
+            },
             @{@"key": @"debug_skip_wait_jit",
                 @"hasDetail": @YES,
                 @"icon": @"forward",
