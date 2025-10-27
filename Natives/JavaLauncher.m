@@ -108,7 +108,7 @@ int launchJVM(NSString *username, id launchTarget, int width, int height, int mi
         task_set_exception_ports(mach_task_self(), EXC_MASK_BAD_ACCESS, 0, EXCEPTION_DEFAULT, MACHINE_THREAD_STATE);
     }
 
-    if ([NSFileManager.defaultManager fileExistsAtPath:[NSBundle.mainBundle.bundlePath stringByAppendingPathComponent:@"LSAppInfo.plist"]] && !@available(iOS 26.0, *) {
+    if ([NSFileManager.defaultManager fileExistsAtPath:[NSBundle.mainBundle.bundlePath stringByAppendingPathComponent:@"LSAppInfo.plist"]] && !@available(iOS 26.0, *)) {
         NSDebugLog(@"[JavaLauncher] Running in LiveContainer, skipping dyld patch");
     } else if (!@available(iOS 26.0, *) || jit26AlwaysAttached) {
         // Activate Library Validation bypass for external runtime and dylibs (JNA, etc)
