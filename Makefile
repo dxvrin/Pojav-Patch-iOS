@@ -57,7 +57,6 @@ else
 IOS         := 1
 SDKPATH     ?= /usr/share/SDKs/iPhoneOS.sdk
 BOOTJDK     ?= /usr/lib/jvm/java-8-openjdk/bin
-endif
 ifeq ($(shell test "$(OSVER)" -gt 14; echo $$?),0)
 PREFIX      ?= /var/jb/
 else
@@ -65,7 +64,7 @@ PREFIX      ?= /
 endif
 $(warning Building on iOS. Note that all targets may not compile or require external components.)
 endif
-ifeq ($(DETECTPLAT),Linux)
+else ifeq ($(DETECTPLAT),Linux)
 IOS         := 0
 # SDKPATH presence is checked later
 BOOTJDK     ?= /usr/bin
