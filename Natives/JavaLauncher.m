@@ -112,7 +112,7 @@ int launchJVM(NSString *username, id launchTarget, int width, int height, int mi
     if ([NSFileManager.defaultManager fileExistsAtPath:[NSBundle.mainBundle.bundlePath stringByAppendingPathComponent:@"LSAppInfo.plist"]]) {
         NSDebugLog(@"[JavaLauncher] Running in LiveContainer, skipping dyld patch");
     } else {
-        if (@available(iOS 26.0, *) || jit26AlwaysAttached) {
+        if (@available(iOS 26.0, *) || !jit26AlwaysAttached) {
             // Disable Library Validtion bypass for iOS 26 because of stricter JIT
         } else {
             // Activate Library Validation bypass for external runtime and dylibs (JNA, etc)
