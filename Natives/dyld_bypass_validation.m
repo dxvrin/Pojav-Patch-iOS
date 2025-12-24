@@ -208,8 +208,8 @@ void init_bypassDyldLibValidation() {
     
     orig_fcntl = __fcntl;
     char *dyldBase = getDyldBase();
-    redirectFunction("mmap", mmap, hooked_mmap);
-    redirectFunction("fcntl", fcntl, hooked___fcntl);
+    //redirectFunction("mmap", mmap, hooked_mmap);
+    //redirectFunction("fcntl", fcntl, hooked_fcntl);
     searchAndPatch("dyld_mmap", dyldBase, mmapSig, sizeof(mmapSig), hooked_mmap);
     bool fcntlPatchSuccess = searchAndPatch("dyld_fcntl", dyldBase, fcntlSig, sizeof(fcntlSig), hooked___fcntl);
     
