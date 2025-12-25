@@ -101,8 +101,7 @@
               ],
               @"pickList": @[
                   localize(@"preference.title.appicon-default", nil),
-                  localize(@"preference.title.appicon-dark", nil),
-                  localize(@"preference.title.appicon-development", nil)
+                  localize(@"preference.title.appicon-dark", nil)
               ]
             },
             @{@"key": @"hidden_sidebar",

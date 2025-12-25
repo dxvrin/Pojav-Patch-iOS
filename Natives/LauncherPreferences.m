@@ -137,6 +137,7 @@ NSArray* getRendererKeys(BOOL containsDefault) {
     NSMutableArray *array = @[
         @"auto",
         @ RENDERER_NAME_GL4ES,
+        @ RENDERER_NAME_NGGL4ES,
         @ RENDERER_NAME_MTL_ANGLE,
         @ RENDERER_NAME_MOBILEGLUES,
         @ RENDERER_NAME_VK_ZINK
@@ -153,11 +154,12 @@ NSArray* getRendererNames(BOOL containsDefault) {
     NSMutableArray *array;
 
     array = @[
-        localize(@"preference.title.renderer.debug.auto", nil),
-        localize(@"preference.title.renderer.debug.gl4es", nil),
-        localize(@"preference.title.renderer.debug.angle", nil),
-        localize(@"preference.title.renderer.debug.mobileglues", nil),
-        localize(@"preference.title.renderer.debug.zink", nil)
+        localize(@"preference.title.renderer.auto", nil),
+        localize(@"preference.title.renderer.gl4es", nil),
+        localize(@"preference.title.renderer.nggl4es", nil),
+        localize(@"preference.title.renderer.angle", nil),
+        localize(@"preference.title.renderer.mobileglues", nil),
+        localize(@"preference.title.renderer.zink", nil)
     ].mutableCopy;
     if (containsDefault) {
         [array insertObject:@"(default)" atIndex:0];
