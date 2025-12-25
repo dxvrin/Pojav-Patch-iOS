@@ -11,7 +11,6 @@
 #include <sys/types.h>
 
 #include "EGL/egl.h"
-#include "EGL/eglext.h"
 #include "GL/osmesa.h"
 
 #include "glfw_keycodes.h"
@@ -56,8 +55,12 @@ int pojavInitOpenGL() {
         renderer = @ RENDERER_NAME_GL4ES;
         setenv("POJAVPATCH_RENDERER", renderer.UTF8String, 1);
         set_gl_bridge_tbl();
+    } else if ([renderer isEqualToString:@ RENDERER_NAME_NGGL4ES]) {
+        renderer = @ RENDERER_NAME_NGGL4ES;
+        // setenv("POJAVPATCH_RENDERER", renderer.UTF8String, 1);
+        set_gl_bridge_tbl();
     } else if ([renderer isEqualToString:@ RENDERER_NAME_MTL_ANGLE]) {
-        renderer = @RENDERER_NAME_MTL_ANGLE;
+        renderer = @ RENDERER_NAME_MTL_ANGLE;
         set_gl_bridge_tbl();
     } else if ([renderer isEqualToString:@ RENDERER_NAME_MOBILEGLUES]) {
         //renderer = @RENDERER_NAME_MOBILEGLUES;
